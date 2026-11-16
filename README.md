@@ -7,7 +7,7 @@ Method, data and limitations: **[TECHNICAL.md](TECHNICAL.md)**.
 
 ```
 git clone https://github.com/metrica-sports/more-than-a-hack-2027 repo      # unpack the data bundle into repo/data (its DATA.md)
-git clone REPO_URL possession                                                # must sit next to repo/
+git clone https://github.com/AdityaMurugesh/bueno-mtah2027 possession                                                # must sit next to repo/
 cd possession
 python -m venv .venv
 .venv/Scripts/pip install -r requirements.txt                                # .venv/bin/pip on Linux / macOS

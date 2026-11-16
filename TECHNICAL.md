@@ -1,7 +1,7 @@
 # Ball possession from automatic tracking: technical note
 
 More than a Hack 2027, Phase 1. Team: **bueno**.
-Code: REPO_URL. One command rebuilds the submitted file byte for byte (see Reproduction).
+Code: https://github.com/AdityaMurugesh/bueno-mtah2027. One command rebuilds the submitted file byte for byte (see Reproduction).
 
 ## 1. Approach in one paragraph
 
@@ -139,7 +139,7 @@ gained only +0.003, so the submission stays as it is.
 
 ```
 git clone https://github.com/metrica-sports/more-than-a-hack-2027 repo   # data bundle unpacked into repo/data
-git clone REPO_URL possession                                           # next to repo/
+git clone https://github.com/AdityaMurugesh/bueno-mtah2027 possession                                           # next to repo/
 cd possession && python -m venv .venv && .venv/Scripts/pip install -r requirements.txt   # (bin/ on Linux)
 python make_submission.py --team bueno                              # -> out/bueno.csv
 ```
