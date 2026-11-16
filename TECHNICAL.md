@@ -85,7 +85,7 @@ both are excluded.
 | Tactical automatic tracking (ATD) | **Main input** |
 | Smart Tagging | **Kickoff rule.** Also a label-free sanity proxy: set-piece windows called D 0.87; team-phase agreement 0.83 / 0.85. Tried as model input (simulated on the bench from DFL restart events): +0.002, dropped. |
 | Public 5-minute ground truth | Wiring check only (frames aligned, H/A not swapped), never for choosing or tuning |
-| Tactical video | Tried an off-the-shelf YOLO ball detector (40% agreement with the tracking ball) and a self-supervised one. Not used: it could not be validated on the bench, and a teammate's version showed the output file becomes sensitive to tiny float differences. |
+| Tactical video | **Not used by the submitted algorithm.** An early ball-detector prototype was dropped: it could not be validated on other games. The algorithm reads no video, and no model in it was trained or calibrated on the video. |
 | Broadcast video | Not used |
 
 ## 7. Training data
@@ -129,8 +129,8 @@ gained only +0.003, so the submission stays as it is.
 
 - **Short possessions.** 30% of possessions last under 2 s. Recall is 0.15 for those under 1 s and 0.42 for
   1-2 s. Missed spells split into wrong team (46%), merged or split (44%) and inside dead time (10%). With the
-  ball missing on 41% of frames, that is close to what tracking alone supports. The next lever is our own ball
-  detection on the tactical video, validated on a labelled video dataset.
+  ball missing on 41% of frames, that is close to what tracking alone supports. The next lever is a ball detector
+  trained only on other matches' labelled video, used as an extra input.
 - **Domain style gap.** Barça's positional play differs from the Bundesliga. More varied labelled tracking
   would help.
 - **Goal kicks** are called dead in about 67% of their tag windows, compared with 87% for all set pieces.
