@@ -109,8 +109,21 @@ Leave-one-match-out on the degraded IDSSE bench (seed 99), spellF1:
 | Set encoder + TTA (single) | about 0.70 |
 | Final ensemble, most realistic bench (degrade 6/7) | about 0.69 |
 
-**Independent check on a second bench** (a teammate's: 30 games from 3 sources, a different degradation, 5 folds ×
-3 seeds; our models never trained on its Metrica or SkillCorner games): results to be added.
+**Independent check on a second bench.** A teammate built a separate bench: 30 games from 3 sources (Metrica's 3
+public sample games with event-derived labels, the 7 IDSSE matches, and 20 SkillCorner A-League broadcast games).
+It uses a different, ball-only degradation and 5 folds × 3 test seeds. Our final models were frozen, and they never
+saw the Metrica or SkillCorner games, so only those count. Its other systems are refitted per fold.
+
+| System (mean spellF1) | Metrica (9 runs) | SkillCorner (60 runs) |
+|---|---|---|
+| Hand features + logistic regressions + hand-over-gated Viterbi | 0.503 | 0.337 |
+| Set-encoder TCN trained on Metrica + IDSSE (per fold) | 0.677 | 0.359 |
+| **Ours (submitted)** | **0.710** | **0.373** |
+
+Ours wins 98-100% of paired runs against the first system and 78% against the second (+0.017). SkillCorner labels
+follow a different possession definition (provider "possession groups", fewer and longer spells), so every system
+scores lower there. Adding either other system to our ensemble as an eighth member (weight 1/8, fixed in advance)
+gained only +0.003, so the submission stays as it is.
 
 ## 9. Limitations and what we would do next
 
