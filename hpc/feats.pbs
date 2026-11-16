@@ -1,0 +1,12 @@
+#!/bin/bash
+# Build v1 and v2 feature caches for seeds 0-3 (+ eval seed 99). CPU work, so ask for many cores.
+#PBS -q gpuq
+#PBS -N mtah_feats
+#PBS -l select=1:ncpus=40:ngpus=1:mem=300gb
+#PBS -l walltime=04:00:00
+#PBS -j oe
+cd "$PBS_O_WORKDIR"
+module load python/3.14.0-gcc-12.5.0-4km4ttx >/dev/null 2>&1
+source ../.venv/bin/activate
+export PYTHONWARNINGS=ignore OMP_NUM_THREADS=1
+for v in 1 2; do MTAH_FEAT=$v python gen_feats.py --seeds 0 1 2 3 --workers 36; done

@@ -1,0 +1,8 @@
+cache/
+out/
+__pycache__/
+*.npz
+*.npy
+.venv/
+# never commit match data
+data/

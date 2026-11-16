@@ -1,0 +1,12 @@
+#!/bin/bash
+# Generic job: qsub -N name -v CMD="python seq.py --cv",FEAT=2 hpc/run.pbs   (submit from ~/mtah/work)
+#PBS -q gpuq
+#PBS -l select=1:ncpus=16:ngpus=1:mem=128gb
+#PBS -l walltime=06:00:00
+#PBS -j oe
+cd "$PBS_O_WORKDIR"
+module load python/3.14.0-gcc-12.5.0-4km4ttx >/dev/null 2>&1
+source ../.venv/bin/activate
+export MTAH_FEAT=${FEAT:-2} PYTHONWARNINGS=ignore OMP_NUM_THREADS=16
+echo "host $(hostname) feat $MTAH_FEAT cmd: $CMD"; nvidia-smi -L
+eval "$CMD"
